@@ -10,25 +10,25 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        $account = Account::create(['name' => 'Acme Corporation']);
+        $account = Account::create(['name' => 'vinc']);
 
         factory(User::class)->create([
             'account_id' => $account->id,
-            'first_name' => 'John',
-            'last_name' => 'Doe',
-            'email' => 'johndoe@example.com',
+            'first_name' => 'Wadday',
+            'last_name' => 'Hassan',
+            'email' => 'waddayhassan@gmail.com',
             'owner' => true,
         ]);
 
-        factory(User::class, 5)->create(['account_id' => $account->id]);
+//        factory(User::class, 5)->create(['account_id' => $account->id]);
 
-        $organizations = factory(Organization::class, 100)
-            ->create(['account_id' => $account->id]);
+//        $organizations = factory(Organization::class, 100)
+//            ->create(['account_id' => $account->id]);
 
-        factory(Contact::class, 100)
-            ->create(['account_id' => $account->id])
-            ->each(function ($contact) use ($organizations) {
-                $contact->update(['organization_id' => $organizations->random()->id]);
-            });
+//        factory(Contact::class, 100)
+//            ->create(['account_id' => $account->id])
+//            ->each(function ($contact) use ($organizations) {
+//                $contact->update(['organization_id' => $organizations->random()->id]);
+//            });
     }
 }

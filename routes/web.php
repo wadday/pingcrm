@@ -19,6 +19,14 @@ Route::post('logout')->name('logout')->uses('Auth\LoginController@logout');
 // Dashboard
 Route::get('/')->name('dashboard')->uses('DashboardController')->middleware('auth');
 
+//Clients
+Route::get('/clients')->name('clients')->uses('ClientController@index')->middleware('auth');
+Route::get('/clients/create')->name('clients.create')->uses('ClientController@create')->middleware('auth');
+Route::post('/clients')->name('clients.store')->uses('ClientController@store')->middleware('auth');
+Route::get('/clients/{client}/edit')->name('clients.edit')->uses('ClientController@edit')->middleware('auth');
+Route::delete('clients/{client}')->name('clients.destroy')->uses('ClientController@destroy')->middleware('auth');
+Route::put('clients/{client}/restore')->name('clients.restore')->uses('ClientController@restore')->middleware('auth');
+
 // Accounts
 Route::get('accounts')->name('accounts')->uses('AccountsController@index')->middleware('remember', 'auth');
 Route::get('accounts/create')->name('accounts.create')->uses('AccountsController@create')->middleware('auth');
